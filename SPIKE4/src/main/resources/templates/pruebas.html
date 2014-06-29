@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><p th:text="#{cabecera}"></p></title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <link href="/js/bootstrap.min.js" rel="stylesheet" media="screen" th:href="@{/js/bootstrap.min.js}"/>
+   	<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/css/core.css" rel="stylesheet" media="screen" th:href="@{css/core.css}" />
+    <link href="/css/bootstrapValidator.min.css" rel="stylesheet" media="screen" th:href="@{css/bootstrapValidator.min.css}"/>
+    <link href="/js/bootstrapValidator.js" rel="stylesheet" media="screen" th:href="@{js/bootstrapValidator.js}"/>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+
+    <!--  <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+</head>
+<body>
+
+<div class="container">
+    <div class="hero-unit">
+      
+     <h1><p th:text="#{Introduce_un_nuevo_siniestro}"></p> </h1>      
+ 
+	 <p>   
+     
+     <button type="button" th:href="@{/}" class="btn btn-large btn-success" >
+  		<span class="glyphicon glyphicon-file" th:text="#{nuevo}"></span>
+	  </button>
+	  </p>
+  
+  	<form class="form-horizontal" action="siniestro/save" method="post"> 	
+  		
+  			 <div class="form-group">
+    			<label  for="exampleInputEmail1" class="control-label" th:text="#{matricula}"></label>
+    			
+    				<p>
+      				<input type="text" class="form-control" name="matricula" id="exampleInputEmail1"  th:placeholder="#{matricula}"/>
+      				</p>
+    		
+  			</div>
+  	
+     
+  			 <div class="form-group">
+    			<label  class="control-label" th:text="#{numero_de_poliza}"></label>
+    	
+    				<p>
+      				<input type="text" class="form-control" name="numeroPoliza"  th:placeholder="#{numero_de_poliza}"/>
+      				</p>
+    		
+  			</div>
+  		
+  	
+  			 <div class="form-group">
+    			<label class="control-label" th:text="#{numero_de_bastidor}"></label>
+    		
+    				<p>
+      				<input type="text" class="form-control" name="numeroBastidor"  th:placeholder="#{numero_de_bastidor}"/>
+      				</p>
+    		
+  			</div>
+  		
+   
+  			 <div class="form-group">
+    			<label class="control-label" th:text="#{marca}"></label>
+    		
+    				<p>
+      				<input type="text" class="form-control" name="marca" th:placeholder="#{marca}"/>
+      				</p>
+    		
+  			</div>
+  		
+  		
+  		 <div class="form-group">
+    			<label class="control-label" th:text="#{modelo}"></label>
+    			
+    				<p>
+      				<input type="text" class="form-control" name="modelo"  th:placeholder="#{modelo}"/>
+      				</p>
+    		
+  		</div>
+  	  
+  		
+  			 <div class="form-group">
+    			<label class="control-label" th:text="#{fecha_del_accidente}"></label>
+    			
+    				<p>
+      				<input type="text" class="form-control" name="fechaAccidente"  th:placeholder="#{formatofecha}"/>
+      				
+      				</p>
+    			
+  			</div>
+  	
+  	
+  			 <div class="form-group">
+    			<label class="control-label" th:text="#{lugar_del_accidente}"></label>
+    			
+    				<p>
+      				<input type="text" class="form-control" name="lugarAccidente"  th:placeholder="#{lugar_del_accidente}"/>
+      				</p>
+    		
+  			</div>
+  
+  		
+  			 <div class="form-group">
+    			<label class="control-label" th:text="#{tipo}"></label>
+    		
+    				<p>
+      				<input type="text" class="form-control" name="tipo"  th:placeholder="#{tipo}"/>
+      				</p>
+    		
+  			</div>
+  		                      
+        <div>        
+          <button type="submit" value="Submit" class="btn btn-large btn-success" >
+            	<span class="glyphicon glyphicon-floppy-open" th:text="#{guardar}"></span>
+            	
+          </button>
+       </div>  
+           
+     </form>     
+ 
+	
+	<table class= "table table-condensed">
+  	<tr class="success">
+	    <th th:text="#{matricula}"></th>
+	    <th th:text="#{numero_de_poliza}"></th>
+	    <th th:text="#{numero_de_bastidor}"></th>
+	    <th th:text="#{marca}"></th>
+	    <th th:text="#{modelo}"></th>
+	    <th th:text="#{fecha_del_accidente}"></th>
+	    <th th:text="#{lugar_del_accidente}"></th>
+	    <th th:text="#{tipo}"></th>    
+       
+  	</tr>
+   	<tr class="info" th:each="siniestro : ${siniestroList}">
+        <td th:text="${siniestro.matricula}"></td>
+        <td th:text="${siniestro.numeroPoliza}"></td>
+        <td th:text="${siniestro.numeroBastidor}"></td>
+        <td th:text="${siniestro.marca}"></td>
+        <td th:text="${siniestro.modelo}"></td>
+        <td th:text="${siniestro.fechaAccidente}"></td>      
+        <td th:text="${siniestro.lugarAccidente}"></td>
+        <td th:text="${siniestro.tipo}"></td>       
+        <td>   <button class="btn btn-large btn-danger" href="#" th:href="@{/siniestro/delete(id=${siniestro.id})}" >
+  					<span class="glyphicon glyphicon-trash"  th:text="#{borrar}"></span>  					
+	  			</button>            
+      	</td>
+      	<td><a class = "btn btn-large btn-danger" href="#" th:href="@{/siniestro/delete(id=${siniestro.id})}">
+      			<span class="glyphicon glyphicon-trash" th:text="#{borrar}"></span> 
+      		</a> 
+		</td>
+   
+   </tr> 
+  </table>
+	  
+    </div>
+	  <h1><p th:text="#{Introduce_un_nuevo_siniestro}"></p> </h1>    
+</div>
+</body>
+</html>
+

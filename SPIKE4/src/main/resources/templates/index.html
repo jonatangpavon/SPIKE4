@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title th:text="#{cabecera}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/js/bootstrap.min.js" rel="stylesheet" media="screen" th:href="@{/js/bootstrap.min.js}"/>
+   	<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/css/core.css" rel="stylesheet" media="screen" th:href="@{/css/core.css}" />  
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="fragments/header :: header">
+    <!-- ============================================================================ -->
+    <!-- This content is only used for static prototyping purposes (natural templates)-->
+    <!-- and is therefore entirely optional, as this markup fragment will be included -->
+    <!-- from "fragments/header.html" at runtime.                                     -->
+    <!-- ============================================================================ -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Static header</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1><p th:text="#{welcome}"></p></h1>    
+        <p>
+            <a th:href="@{/siniestro}" class="btn btn-large btn-success"  th:text="#{siniestros}"></a>
+            <a th:href="@{/hello}" class="btn btn-large btn-success"  th:text="#{hello}"></a>       
+            <a th:href="@{/login}" class="btn btn-large btn-success"  th:text="#{login}"></a> 
+            <a th:href="@{/pruebas}" class="btn btn-large btn-danger"  >PRUEBAS</a>       
+        </p>
+    </div> 
+    <div th:replace="fragments/footer :: footer">&copy; 2014 The Static Templates</div>
+</div>
+</body>
+</html>

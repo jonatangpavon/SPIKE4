@@ -19,6 +19,11 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	private SiniestroRepository repositorySini;
 
+	public static void main(String[] args) {
+
+		SpringApplication.run(Application.class, args);
+	}
+
 	public void run(String... args) throws Exception {
 
 		repositorySini.deleteAll();
